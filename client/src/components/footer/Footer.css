@@ -1,0 +1,74 @@
+/* Footer.css - Professional Modern Minimal Theme */
+:root {
+  --footer-bg: #FAFAFA;
+  --footer-text: #2D2D2D;
+  --footer-secondary: #6B7280;
+  --footer-accent: #F87171;
+  --footer-hover: #EF4444;
+  --footer-border: #E5E7EB;
+  --footer-white: #fff;
+}
+
+.footer-container {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 48px 0 24px 0;
+    font-size: 1rem;
+    box-shadow: 0 -2px 12px rgba(44,44,44,0.04);
+    border-top: 2px solid var(--footer-border);
+}
+
+.footer-container h5 {
+    color: #f57c00;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.footer-container p, .footer-container a{
+    color: var(--footer-secondary);
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-container a:hover {
+    color: var(--footer-hover);
+}
+
+.social-icons a {
+    font-size: 1.6rem;
+    margin-right: 18px;
+    display: inline-block;
+    color: var(--footer-accent);
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--footer-hover);
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width: 900px) {
+  .footer-container .row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-container .col-md-4 {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  .footer-container {
+    padding: 32px 0 16px 0;
+  }
+  .social-icons {
+    justify-content: center;
+    margin-top: 12px;
+  }
+}

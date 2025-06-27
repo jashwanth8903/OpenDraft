@@ -1,0 +1,141 @@
+/* Register.css - Sky Blue, Yellow, Orange Theme */
+:root {
+  --skyblue: #4fc3f7;
+  --skyblue-dark: #039be5;
+  --yellow: #ffd600;
+  --yellow-light: #fff59d;
+  --orange: #ff9800;
+  --orange-dark: #f57c00;
+  --gray-bg: #f8fafc;
+  --white: #fff;
+  --text-dark: #222;
+  --text-light: #fff;
+}
+
+.register-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--gray-bg);
+}
+
+.form {
+    background-color: var(--white);
+    display: block;
+    padding: 2rem;
+    max-width: 400px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 24px rgba(79,195,247,0.10);
+}
+
+.form-title {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--skyblue-dark);
+}
+
+.message {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--orange);
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input-container input,
+.form button {
+    outline: none;
+    border: 1px solid var(--skyblue);
+    margin: 8px 0;
+}
+
+.input-container input {
+    background-color: var(--white);
+    padding: 1rem;
+    padding-right: 3rem;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+}
+
+.input-container input:focus {
+    border-color: var(--orange);
+}
+
+.submit {
+    display: block;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    background-color: var(--skyblue);
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 700;
+    width: 100%;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submit:hover {
+    background-color: var(--orange);
+    color: var(--text-light);
+}
+
+.text-danger {
+    color: #dc3545;
+    text-align: center;
+}
+
+.signup-link {
+    color: var(--text-dark);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.signup-link a {
+    text-decoration: underline;
+    color: var(--orange);
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    color: var(--skyblue-dark);
+}
+
+.usertype {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 10px 0;
+}
+
+.input-container-radio {
+    display: flex;
+    align-items: center;
+}
+
+.input-radio {
+    margin-right: 0.5rem;
+}
+
+.label {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}

@@ -1,0 +1,113 @@
+/* Login.css - Sky Blue, Yellow, Orange Theme */
+:root {
+  --skyblue: #4fc3f7;
+  --skyblue-dark: #039be5;
+  --yellow: #ffd600;
+  --yellow-light: #fff59d;
+  --orange: #ff9800;
+  --orange-dark: #f57c00;
+  --gray-bg: #f8fafc;
+  --white: #fff;
+  --text-dark: #222;
+  --text-light: #fff;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--gray-bg);
+}
+
+.form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 24px rgba(79,195,247,0.10);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--skyblue-dark);
+}
+
+.input-container {
+    margin-bottom: 1rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--skyblue);
+    border-radius: 0.25rem;
+    transition: border-color 0.3s ease;
+    background: var(--white);
+}
+
+.input:focus {
+    border-color: var(--orange);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 152, 0, 0.15);
+}
+
+.input-container-radio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.input-radio {
+    margin-right: 0.5rem;
+}
+
+.label {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.submit {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--skyblue);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--text-dark);
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.submit:hover {
+    background-color: var(--skyblue-dark);
+    color: var(--text-light);
+}
+
+.text-danger {
+    color: #dc3545;
+    text-align: center;
+}
+
+.signup-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.signup-link a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+    color: var(--orange);
+}
