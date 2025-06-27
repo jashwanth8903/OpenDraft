@@ -1,0 +1,32 @@
+###
+post http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"testuser",
+    "password":"testuser",
+    "email":"testuser@gmail.com"
+}
+
+###
+post http://localhost:4000/user-api/login
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"testuser",
+    "password":"testuser"
+}
+
+###
+get http://localhost:4000/user-api/articles
+
+### post comments
+post http://localhost:4000/user-api/comment/1716908271
+Content-Type: application/json
+
+{
+    "username":"testtt new user",
+    "comments":"awesome content"
+}
