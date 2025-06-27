@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 //import { axiosWithToken } from '../../../axioswithtoken';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 function ArticlesByAuthor() {
 
   const [articlesList, setArticlesList] = useState([]);
@@ -17,7 +19,7 @@ function ArticlesByAuthor() {
   const axiosWithToken = axios.create({
     headers: {Authorization: `Bearer ${token}`}
   })
-    let res = await axiosWithToken.get(`http://localhost:4000/author-api/article/${currentUser.username}`)
+    let res = await axiosWithToken.get(`${BACKEND_URL}/author-api/article/${currentUser.username}`)
     console.log("response",res)
     setArticlesList(res.data.payload)
   }

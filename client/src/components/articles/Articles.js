@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 // import { axiosWithToken } from '../../../axioswithtoken';
 import './Articles.css';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 function Articles() {
   const [articlesList, setArticlesList] = useState([]);
@@ -14,7 +16,7 @@ function Articles() {
   const axiosWithToken = axios.create({
     headers: {Authorization: `Bearer ${token}`}
   })
-    let res = await axiosWithToken.get(`http://localhost:4000/user-api/articles`);
+    let res = await axiosWithToken.get(`${BACKEND_URL}/user-api/articles`);
     console.log("response", res);
     setArticlesList(res.data.payload);
   };

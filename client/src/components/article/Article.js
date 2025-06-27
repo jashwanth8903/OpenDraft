@@ -11,6 +11,8 @@ import { axiosWithToken } from '../../axioswithtoken';
 
 import './Article.css';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 function Article() {
   let { currentUser } = useSelector(state => state.userAuthorLoginReducer);
   let { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -33,7 +35,7 @@ function Article() {
 
   const writeComment = async (commentObj) => {
     commentObj.username = currentUser.username;
-    let res = await axiosWithToken.post(`http://localhost:4000/user-api/comment/${state.state.articleId}`, commentObj);
+    let res = await axiosWithToken.post(`${BACKEND_URL}/user-api/comment/${state.state.articleId}`, commentObj);
     if (res.data.message === 'comment posted') {
       setComment('Comment posted!');
       setComments(prev => [...prev, { username: commentObj.username, comment: commentObj.comment }]);
@@ -51,7 +53,7 @@ function Article() {
     delete modifiedArticle._id;
     console.log(modifiedArticle);
     console.log("id is ", modifiedArticle.articleId);
-    let res = await axiosWithToken.put(`http://localhost:4000/author-api/article`, modifiedArticle);
+    let res = await axiosWithToken.put(`${BACKEND_URL}/author-api/article`, modifiedArticle);
     console.log(res);
     if (res.data.message === 'Article updated') {
       setArticleEditStatus(false);
@@ -60,7 +62,7 @@ function Article() {
   };
 
   const enableDeleteStatus = async () => {
-    let res = await axiosWithToken.put(`http://localhost:4000/author-api/article/${state.state.articleId}`);
+    let res = await axiosWithToken.put(`${BACKEND_URL}/author-api/article/${state.state.articleId}`);
     console.log('deleted res', res);
     if (res.data.message === 'Article deleted') {
       setArticleDeleteStatus(true);
@@ -68,7 +70,7 @@ function Article() {
   };
 
   const restoredArticle = async () => {
-    let res = await axiosWithToken.put(`http://localhost:4000/author-api/restore-article/${state.state.articleId}`);
+    let res = await axiosWithToken.put(`${BACKEND_URL}/author-api/restore-article/${state.state.articleId}`);
     console.log('restored res', res);
     if (res.data.message === 'Article restored') {
       setArticleDeleteStatus(false);

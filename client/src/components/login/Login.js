@@ -9,7 +9,7 @@ function Login() {
     
     // let navigate = useNavigate();
     let { register, handleSubmit, formState: { errors } } = useForm();
-    let {errorOccurred,loginUserStatus,errMsg,currentUser}=useSelector(state=>state.userAuthorLoginReducer);
+    let {errorOccurred,loginUserStatus,currentUser}=useSelector(state=>state.userAuthorLoginReducer);
     let dispatch = useDispatch();
     let navigate = useNavigate();
 

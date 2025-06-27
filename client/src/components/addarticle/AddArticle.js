@@ -5,6 +5,8 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 export default function AddArticle() {
     let {register,handleSubmit, formState: { errors }} = useForm();
     let navigate = useNavigate();
@@ -26,7 +28,7 @@ export default function AddArticle() {
         article.status = true;
         console.log(article)
         //make http request
-        let res = await axiosWithToken.post('http://localhost:4000/author-api/article',article)
+        let res = await axiosWithToken.post(`${BACKEND_URL}/author-api/article`,article)
         console.log(res)
         if(res.data.message === 'new article created'){
             navigate(`/author-profile/article-by-author/${currentUser.username}`)

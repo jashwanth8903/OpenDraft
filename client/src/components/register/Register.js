@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import './Register.css'; // Importing the CSS file
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
@@ -13,7 +15,7 @@ function Register() {
         console.log(userData)
         //make http post req
         if(userData.usertype==='user'){
-        let res = await axios.post('http://localhost:4000/user-api/user',userData)
+        let res = await axios.post(`${BACKEND_URL}/user-api/user`,userData)
         console.log(res)
         if(res.data.message === 'user created'){
             //navigate to login
@@ -24,7 +26,7 @@ function Register() {
         }
     }else{
         
-            let res = await axios.post('http://localhost:4000/author-api/author',userData)
+            let res = await axios.post(`${BACKEND_URL}/author-api/author`,userData)
             console.log(res)
             if(res.data.message === 'user created'){
                 //navigate to login
