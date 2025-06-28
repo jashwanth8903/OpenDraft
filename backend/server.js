@@ -2,8 +2,14 @@ const exp = require('express')
 const app = exp();
 require('dotenv').config()
 const path = require('path');
-const cors =require('cors');
-app.use(cors());
+const cors = require('cors');
+
+// Use frontend URL from environment variable for CORS
+const allowedOrigin = process.env.FRONTEND_URL || '*';
+app.use(cors({
+    origin: allowedOrigin,
+    credentials: true
+}));
 //deploy react build in this server
 app.use(exp.static(path.join(__dirname, '../client/blog-app/build')))
 
