@@ -6,10 +6,15 @@ const cors = require('cors');
 
 // Use frontend URL from environment variable for CORS
 const allowedOrigin = process.env.FRONTEND_URL || '*';
-app.use(cors({
+const corsOptions = {
     origin: allowedOrigin,
-    credentials: true
-}));
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+app.use(cors(corsOptions));
+// Explicitly handle preflight requests
+app.options('*', cors(corsOptions));
 //deploy react build in this server
 app.use(exp.static(path.join(__dirname, '../client/blog-app/build')))
 
