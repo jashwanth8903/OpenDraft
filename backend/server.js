@@ -34,37 +34,34 @@ mongoClient.connect(process.env.DB_URL)
     app.set('authorscollection', authorscollection)
     
     console.log('DB connection success')
+
+    //to parse the body of req
+    app.use(exp.json())
+
+    //import API router
+    const userApp = require('./APIs/user-api')
+    const adminApp = require('./APIs/admin-api')
+    const authorApp = require('./APIs/author-api')
+
+    // if path starts with user-api, send response to userapp
+    app.use('/user-api',userApp)
+    // if path starts with admin-api, send response to adminapp
+    app.use('/admin-api',adminApp)
+    // if path starts with author-api, send response to authorapp
+    app.use('/author-api',authorApp)
+
+    //express error handler
+    app.use((err,req,res,next)=>{
+        res.send({message:"error",payload: err.message})
+    })
+
+    app.get('/', (req, res) => {
+        res.send({activeStatus: "Server is running"});
+    });
+
+    const port = process.env.PORT || 5000
+    app.listen(port, ()=>console.log(`server running at port ${port} successfully!`))
 })
 .catch(err=>{
     console.log('DB connection error:', err)
 })
-
-
-//to parse the body of req
-app.use(exp.json())
-
-//import API router
-const userApp = require('./APIs/user-api')
-const adminApp = require('./APIs/admin-api')
-const authorApp = require('./APIs/author-api')
-
-// if path starts with user-api, send response to userapp
-app.use('/user-api',userApp)
-
-// if path starts with admin-api, send response to adminapp
-app.use('/admin-api',adminApp)
-
-// if path starts with author-api, send response to authorapp
-app.use('/author-api',authorApp)
-
-//express error handler
-app.use((err,req,res,next)=>{
-    res.send({message:"error",payload: err.message})
-})
-
-app.get('/', (req, res) => {
-    res.send({activeStatus: "Server is running"});
-});
-
-const port = process.env.PORT || 5000
-app.listen(port, ()=>console.log(`server running at port ${port} successfully!`))
