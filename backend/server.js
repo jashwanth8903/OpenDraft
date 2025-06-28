@@ -15,8 +15,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // Explicitly handle preflight requests
 app.options('*', cors(corsOptions));
-//deploy react build in this server
-app.use(exp.static(path.join(__dirname, '../client/build')))
 
 //import mongo client in server.js
 const mongoClient = require('mongodb').MongoClient
@@ -58,10 +56,6 @@ app.use('/admin-api',adminApp)
 
 // if path starts with author-api, send response to authorapp
 app.use('/author-api',authorApp)
-
-app.use((req, res, next)=>{
-    res.sendFile(path.join(__dirname, '../client/build/index.html'))
-})
 
 //express error handler
 app.use((err,req,res,next)=>{
