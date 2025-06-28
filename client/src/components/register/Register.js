@@ -12,33 +12,26 @@ function Register() {
     let [err, setErr] = useState('');
 
     const onSubmit = async (userData) => {
-        console.log(userData)
         //make http post req
         if(userData.usertype==='user'){
         let res = await axios.post(`${BACKEND_URL}/user-api/user`,userData)
-        console.log(res)
         if(res.data.message === 'user created'){
             //navigate to login
             navigate('/login')
         }else{
             setErr(res.data.message)
-            console.log(res.data.message)
         }
     }else{
         
             let res = await axios.post(`${BACKEND_URL}/author-api/author`,userData)
-            console.log(res)
             if(res.data.message === 'user created'){
                 //navigate to login
                 navigate('/login')
             }else{
                 setErr(res.data.message)
-                console.log(res.data.message)
             }
     }
     };
-
-    console.log(err)
 
     return (
         <div className='register-container'>

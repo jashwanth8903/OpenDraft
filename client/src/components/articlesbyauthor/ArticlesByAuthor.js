@@ -20,7 +20,6 @@ function ArticlesByAuthor() {
       headers: {Authorization: `Bearer ${token}`}
     })
     let res = await axiosWithToken.get(`${BACKEND_URL}/author-api/article/${currentUser.username}`)
-    console.log("response",res)
     setArticlesList(Array.isArray(res.data.payload) ? res.data.payload : [])
   }
 

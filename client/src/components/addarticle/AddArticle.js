@@ -12,9 +12,7 @@ export default function AddArticle() {
     let navigate = useNavigate();
     
     let token = localStorage.getItem('token')
-    //console.log(token)
     let {currentUser} = useSelector(state=>state.userAuthorLoginReducer);
-    console.log(currentUser);
     let axiosWithToken = axios.create({
         headers: {Authorization:`Bearer ${token}`}
     })
@@ -26,10 +24,8 @@ export default function AddArticle() {
         article.username = currentUser.username;
         article.comments = [];
         article.status = true;
-        console.log(article)
         //make http request
         let res = await axiosWithToken.post(`${BACKEND_URL}/author-api/article`,article)
-        console.log(res)
         if(res.data.message === 'new article created'){
             navigate(`/author-profile/article-by-author/${currentUser.username}`)
         }
@@ -48,14 +44,32 @@ export default function AddArticle() {
                 </div>
                 <div className="pro-form-row form-row">
                     <div className="pro-form-group form-group">
-                        <label htmlFor="inputCatergory" className="pro-label">Select a Category</label>
-                        <select id="inputCatergory" className="pro-input form-control" {...register("category", { required: 'Category is required' })} >
-                            <option value="" disabled selected>Choose...</option>
-                            <option value="java">Java</option>
-                            <option value="python">Python</option>
-                            <option value="c lang">C</option>
-                            <option value="c++ lang">C++</option>
-                            <option value="java script">JavaScript</option>
+                        <label htmlFor="inputCategory" className="pro-label">Select a Category</label>
+                        <select id="inputCategory" className="pro-input form-control" {...register("category", { required: 'Category is required' })} defaultValue="">
+                            <option value="" disabled>Choose...</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Programming">Programming</option>
+                            <option value="Science">Science</option>
+                            <option value="Health">Health</option>
+                            <option value="Business">Business</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Education">Education</option>
+                            <option value="Lifestyle">Lifestyle</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Food">Food</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Art">Art</option>
+                            <option value="Politics">Politics</option>
+                            <option value="Environment">Environment</option>
+                            <option value="DIY">DIY</option>
+                            <option value="Parenting">Parenting</option>
+                            <option value="News">News</option>
+                            <option value="Reviews">Reviews</option>
+                            <option value="Opinion">Opinion</option>
+                            <option value="History">History</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Other">Other</option>
                         </select>
                         {errors.category && <p className="text-danger">{errors.category.message}</p>}
                     </div>

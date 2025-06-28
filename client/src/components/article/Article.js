@@ -23,9 +23,6 @@ function Article() {
   let [articleEditStatus, setArticleEditStatus] = useState(false);
   let [articleDeleteStatus, setArticleDeleteStatus] = useState(state.status);
 
-  console.log('stateobj', state);
-  console.log('stateobj articleId', state.state.articleId);
-
   function ISOtoUTC(iso) {
     let date = new Date(iso).getUTCDate();
     let month = new Date(iso).getUTCMonth() + 1;
@@ -51,10 +48,7 @@ function Article() {
     let modifiedArticle = { ...state.state, ...editedArticle };
     modifiedArticle.dateOfModification = new Date();
     delete modifiedArticle._id;
-    console.log(modifiedArticle);
-    console.log("id is ", modifiedArticle.articleId);
     let res = await axiosWithToken.put(`${BACKEND_URL}/author-api/article`, modifiedArticle);
-    console.log(res);
     if (res.data.message === 'Article updated') {
       setArticleEditStatus(false);
       navigate(`/author-profile/article/${modifiedArticle.articleId}`, { state: res.data.article });
@@ -63,7 +57,6 @@ function Article() {
 
   const enableDeleteStatus = async () => {
     let res = await axiosWithToken.put(`${BACKEND_URL}/author-api/article/${state.state.articleId}`);
-    console.log('deleted res', res);
     if (res.data.message === 'Article deleted') {
       setArticleDeleteStatus(true);
     }
@@ -71,7 +64,6 @@ function Article() {
 
   const restoredArticle = async () => {
     let res = await axiosWithToken.put(`${BACKEND_URL}/author-api/restore-article/${state.state.articleId}`);
-    console.log('restored res', res);
     if (res.data.message === 'Article restored') {
       setArticleDeleteStatus(false);
     }
@@ -169,11 +161,29 @@ function Article() {
               <label htmlFor="inputCategory" className="pro-label">Select a Category</label>
               <select id="inputCategory" className="pro-input form-control" defaultValue={state.state.category} {...register("category", { required: 'Category is required' })} >
                 <option value="" disabled>Choose...</option>
-                <option value="java">Java</option>
-                <option value="python">Python</option>
-                <option value="c lang">C</option>
-                <option value="c++ lang">C++</option>
-                <option value="java script">JavaScript</option>
+                <option value="Technology">Technology</option>
+                <option value="Programming">Programming</option>
+                <option value="Science">Science</option>
+                <option value="Health">Health</option>
+                <option value="Business">Business</option>
+                <option value="Finance">Finance</option>
+                <option value="Education">Education</option>
+                <option value="Lifestyle">Lifestyle</option>
+                <option value="Travel">Travel</option>
+                <option value="Food">Food</option>
+                <option value="Sports">Sports</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Art">Art</option>
+                <option value="Politics">Politics</option>
+                <option value="Environment">Environment</option>
+                <option value="DIY">DIY</option>
+                <option value="Parenting">Parenting</option>
+                <option value="News">News</option>
+                <option value="Reviews">Reviews</option>
+                <option value="Opinion">Opinion</option>
+                <option value="History">History</option>
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
               </select>
               {errors.category && <p className="text-danger">{errors.category.message}</p>}
             </div>

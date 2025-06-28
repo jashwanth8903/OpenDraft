@@ -1,11 +1,9 @@
-import React from 'react';
 //import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function Dashboard() {
    // let { state } = useLocation();
     let stateObj = useSelector(state => state.userAuthorLoginReducer)
-    console.log("stateobj is :",stateObj);
 
     return (
         <div>

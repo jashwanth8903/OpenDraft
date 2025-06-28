@@ -15,7 +15,6 @@ function Login() {
 
     
     let handleLoginBtn = (usercredentialobj) => {
-        console.log(usercredentialobj);
         dispatch(userAuthorLoginThunk(usercredentialobj))
     }
     

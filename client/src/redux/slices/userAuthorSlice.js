@@ -5,11 +5,9 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 //make http req using redux-thunk middleware
 export const userAuthorLoginThunk = createAsyncThunk('user-author-login', async(userCredObj, thunkApi)=>{
-    console.log(userCredObj);
     try {
         if(userCredObj.usertype === 'user'){
             const res = await axios.post(`${BACKEND_URL}/user-api/login`,userCredObj)
-            console.log(res);
             if(res.data.message==='login success'){
                 //store token in local/session storage
                 localStorage.setItem('token',res.data.token)
@@ -22,7 +20,6 @@ export const userAuthorLoginThunk = createAsyncThunk('user-author-login', async(
         }
         else if(userCredObj.usertype==='author'){
             const res = await axios.post(`${BACKEND_URL}/author-api/login`,userCredObj)
-            console.log(res);
             if(res.data.message==='login success'){
                 //store token in local/session storage
                 localStorage.setItem('token',res.data.token)

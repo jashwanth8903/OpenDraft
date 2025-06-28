@@ -17,7 +17,7 @@ function Articles() {
       headers: {Authorization: `Bearer ${token}`}
     })
     let res = await axiosWithToken.get(`${BACKEND_URL}/user-api/articles`);
-    console.log("response", res);
+    // Removed console.log("response", res);
     // Defensive: ensure payload is always an array
     setArticlesList(Array.isArray(res.data.payload) ? res.data.payload : []);
   };

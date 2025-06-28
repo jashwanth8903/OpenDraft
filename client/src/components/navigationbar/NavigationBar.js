@@ -24,9 +24,12 @@ function NavigationBar() {
         setMenuOpen((prev) => !prev);
     }
 
+    function handleMenuClose() {
+        setMenuOpen(false);
+    }
+
     return (
         <div>
-
             <nav>
                 <div className='navigation-bar'>
                     <div className='logo-toggle-container'>
@@ -35,24 +38,25 @@ function NavigationBar() {
                             <span className="bar"></span>
                             <span className="bar"></span>
                             <span className="bar"></span>
+                            {menuOpen && <span className="close-x">&#10005;</span>}
                         </button>
                     </div>
                     <div className={`containerr${menuOpen ? ' show' : ''}`}>
                         <ul className="navbar">
                             {loginUserStatus === false ? <>
                                 <li className="nav-item ">
-                                    <NavLink className="nav-link" to="">Home</NavLink>
+                                    <NavLink className="nav-link" to="" onClick={handleMenuClose}>Home</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="login">Login</NavLink>
+                                    <NavLink className="nav-link" to="login" onClick={handleMenuClose}>Login</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="register">Register</NavLink>
+                                    <NavLink className="nav-link" to="register" onClick={handleMenuClose}>Register</NavLink>
                                 </li></> : <>
                                 <div className='user-profile-details'>
                                     <div className='user-profile-name'><FaUserCircle /> <b>{currentUser.username}</b>  ({currentUser.usertype}) </div>
                                     <li className="nav-item user-item">
-                                        <NavLink className="nav-link " to="login" onClick={logout}><TbLogout /> Logout</NavLink>
+                                        <NavLink className="nav-link " to="login" onClick={() => { logout(); handleMenuClose(); }}><TbLogout /> Logout</NavLink>
                                     </li>
                                 </div>
                             </>

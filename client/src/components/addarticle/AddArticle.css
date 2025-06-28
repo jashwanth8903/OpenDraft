@@ -14,3 +14,21 @@
 .form-heading{
     text-align: center;
 }
+
+@media (max-width: 600px) {
+    .new-article-form {
+        width: 98%;
+        padding: 10px;
+        font-size: 1rem;
+    }
+    .form-heading {
+        font-size: 1.3rem;
+    }
+    .pro-form-row, .form-row {
+        margin-bottom: 1rem;
+    }
+    .pro-btn, .btn {
+        width: 100%;
+        font-size: 1rem;
+    }
+}

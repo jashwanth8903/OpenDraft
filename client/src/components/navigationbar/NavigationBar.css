@@ -183,6 +183,7 @@
   cursor: pointer;
   margin-left: auto;
   z-index: 200;
+  position: relative;
 }
 
 .navbar-toggle .bar {
@@ -204,6 +205,29 @@
 
 .navbar-toggle.open .bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+.navbar-toggle .close-x {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  font-size: 1.7rem;
+  color: #ff9800;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar-toggle .close-x:hover {
+  background: #ff9800;
+  color: #fff;
 }
 
 @media (max-width: 900px) {
