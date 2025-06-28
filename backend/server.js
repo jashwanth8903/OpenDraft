@@ -68,6 +68,9 @@ app.use((err,req,res,next)=>{
     res.send({message:"error",payload: err.message})
 })
 
+app.get('/', (req, res) => {
+    res.send({activeStatus: "Server is running"});
+});
 
 const port = process.env.PORT || 5000
 app.listen(port, ()=>console.log(`server running at port ${port} successfully!`))
