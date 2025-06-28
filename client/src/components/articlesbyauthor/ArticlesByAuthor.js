@@ -16,12 +16,12 @@ function ArticlesByAuthor() {
 
   const getArticleOfCurrentAuthor = async()=>{
     const token = localStorage.getItem('token')
-  const axiosWithToken = axios.create({
-    headers: {Authorization: `Bearer ${token}`}
-  })
+    const axiosWithToken = axios.create({
+      headers: {Authorization: `Bearer ${token}`}
+    })
     let res = await axiosWithToken.get(`${BACKEND_URL}/author-api/article/${currentUser.username}`)
     console.log("response",res)
-    setArticlesList(res.data.payload)
+    setArticlesList(Array.isArray(res.data.payload) ? res.data.payload : [])
   }
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function ArticlesByAuthor() {
   return (
     <div>
       <div className='row row-col-1 row-cols-sm-2 row-cols-md-3 g-4 mt-5'>
-        {articlesList.map((article)=>(
+        {Array.isArray(articlesList) && articlesList.map((article)=>(
           <div className='col' key={article.articleId}>
             <div className='card h-100'>
               <div className='card-body'>

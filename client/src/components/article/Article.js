@@ -19,7 +19,7 @@ function Article() {
   let state = useLocation();
   let navigate = useNavigate();
   let [comment, setComment] = useState('');
-  let [comments, setComments] = useState(state.state.comments || []);
+  let [comments, setComments] = useState(Array.isArray(state.state.comments) ? state.state.comments : []);
   let [articleEditStatus, setArticleEditStatus] = useState(false);
   let [articleDeleteStatus, setArticleDeleteStatus] = useState(state.status);
 
@@ -124,7 +124,7 @@ function Article() {
                     :
                     <div className="comments-list">
                       {
-                        comments.map((commentObj, ind) => {
+                        Array.isArray(comments) && comments.map((commentObj, ind) => {
                           return (
                             <div key={ind} className="comment-card">
                               <div className="comment-header">
